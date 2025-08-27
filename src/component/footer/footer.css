@@ -1,0 +1,19 @@
+h1{
+  height:40px;
+  background-color:#fff8e1;
+  text-align:center;
+}
+h2{
+  height:80px;
+  text-align:center;
+}
+.boton{
+  height:50px;
+    width:100px;
+  background-color:#F57C00;
+  text-align:center;
+  
+}
+body{
+  background-color:	#aed581;
+}

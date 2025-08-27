@@ -1,0 +1,17 @@
+@import "Tailwindcss";
+/* Add a serif font fallback similar to the mock */
+body {
+  background-color: #AED581;
+  font-family: Georgia, 'Times New Roman', serif;
+}
+
+/* Ensure the root uses full height for centering */
+#root, html, body {
+  height: 100%;
+}
+.active{
+  color: red;
+  background-color: #AED581;
+  padding: auto;
+  border-radius: 10px;
+}
