@@ -10,7 +10,7 @@ import NotFound from './pages/notFound'
 import Menu from './component/menu/menu'
 import RecuperarCuenta from './pages/recuperarCuenta'
 import RecetaComp from './component/Receta/RecetaComp'
-import RecetaPg from './pages/RecetasPg'
+import RecetasPg from './pages/RecetasPg'
 import PerfilPg from './pages/PerfilPg'
 
 
@@ -27,8 +27,9 @@ createRoot(document.getElementById('root')).render(
           <Route path='*' element={<NotFound/>}/>
           <Route path='/Recuperar_Contrasena' element={<RecuperarCuenta/>}/>
           <Route path='/RecetaComp' element={<RecetaComp/>}/>
-          <Route path='/RecetaPg' element={<RecetaPg/>}/>
+          <Route path='/RecetaPg' element={<RecetasPg/>}/>
           <Route path='/PerfilPg' element={<PerfilPg/>}/>
+          
         </Routes>
       </BrowserRouter>
   </StrictMode>,
