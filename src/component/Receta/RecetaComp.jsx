@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router'
+import { toast } from 'react-hot-toast'
 import recetaImg from '../../imgs/recetaComp.jpg'
 
 export default function RecetaComp({
@@ -21,6 +22,13 @@ export default function RecetaComp({
 				navigate('/RecetaPg', { state: { recipe: payload } })
 			}
 
+			useEffect(() => {
+				const payload = recipe || { title, subtitle, details, priceLevel, difficulty }
+				const stored = JSON.parse(localStorage.getItem('recetasGuardadas') || '[]')
+				const exists = stored.find(r => r.title === payload.title)
+				setSaved(!!exists)
+			}, [recipe, title, subtitle, details, priceLevel, difficulty])
+
 			const toggleSave = (e) => {
 				e.stopPropagation()
 				const payload = recipe || { title, subtitle, details, priceLevel, difficulty }
@@ -30,9 +38,11 @@ export default function RecetaComp({
 				if (exists) {
 					next = stored.filter(r => r.title !== payload.title)
 					setSaved(false)
+					toast.success('Receta eliminada', { duration: 2000, position: 'top-center' })
 				} else {
 					next = [...stored, payload]
 					setSaved(true)
+					toast.success('Receta guardada', { duration: 2000, position: 'top-center' })
 				}
 				localStorage.setItem('recetasGuardadas', JSON.stringify(next))
 			}
