@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useNavigate } from 'react-router'
+import { Link, useNavigate } from 'react-router-dom'
 import RecetaComp from '../component/Receta/RecetaComp'
+import MainLayout from '../layouts/MainLayout'
 
 export default function RecetasGuardadas(){
   const navigate = useNavigate()
@@ -12,7 +13,7 @@ export default function RecetasGuardadas(){
   }, [])
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#AED581] p-4">
+    <MainLayout>
       <div className="w-[375px] max-w-full h-[812px] bg-[#FFF8E1] rounded-3xl shadow-lg overflow-hidden flex flex-col">
         <header className="flex items-center justify-between px-4 py-3 border-b border-[#AED581]">
           <button onClick={() => navigate(-1)} aria-label="back" className="p-1">
@@ -51,6 +52,6 @@ export default function RecetasGuardadas(){
           </div>
         </main>
       </div>
-    </div>
+    </MainLayout>
   )
 }

@@ -1,8 +1,9 @@
 import React from 'react'
+import MainLayout from '../layouts/MainLayout'
 
 export default function RecuperarCuenta(){
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#AED581] p-4">
+    <MainLayout>
       <main className="w-[360px] max-w-full h-[800px] bg-[#FFF8E1] rounded-3xl shadow-lg p-6 flex flex-col items-center">
         <header className="w-full text-center">
           <h1 className="text-3xl sm:text-4xl font-serif text-gray-800">Recetas pa&apos; Hoy</h1>
@@ -35,6 +36,6 @@ export default function RecuperarCuenta(){
         </section>
 
       </main>
-    </div>
+    </MainLayout>
   )
 }

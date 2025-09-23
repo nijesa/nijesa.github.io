@@ -1,13 +1,14 @@
 import React from 'react'
 import { Link, useLocation } from 'react-router'
 import recetaImg from '../imgs/recetaComp.jpg'
+import MainLayout from '../layouts/MainLayout'
 
 export default function RecetaPg(){
 	const { state } = useLocation()
 	const recipe = state?.recipe || { title: 'Receta #1', subtitle: '', details: '', priceLevel: 1, difficulty: 1 }
 
 	return (
-		<div className="min-h-screen flex items-center justify-center bg-[#AED581] p-4">
+		<MainLayout>
 			<div className="w-[375px] max-w-full h-[812px] bg-[#FFF8E1] rounded-3xl shadow-lg overflow-hidden flex flex-col relative">
 				{/* Header */}
 				<header className="flex items-center justify-between px-4 py-3 border-b border-[#AED581]">
@@ -56,6 +57,6 @@ export default function RecetaPg(){
 					</section>
 				</main>
 			</div>
-		</div>
+		</MainLayout>
 	)
 }

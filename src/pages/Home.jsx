@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import RecetaComp from '../component/Receta/RecetaComp'
 import { Link } from 'react-router'
+import MainLayout from '../layouts/MainLayout'
 
 export default function Home(){
     const [menuOpen, setMenuOpen] = useState(false)
@@ -14,7 +15,7 @@ export default function Home(){
         ]
 
         return(
-            <div className="min-h-screen flex items-center justify-center bg-[#AED581] p-4">
+            <MainLayout>
                 <div className="relative w-[375px] max-w-full h-[812px] bg-[#FFF8E1] rounded-3xl shadow-lg overflow-hidden flex flex-col">
                     {/* Header */}
                     <header className="bg-[#FFF8E1] flex items-center justify-between px-4 py-3 border-b border-[#AED581]">
@@ -87,6 +88,6 @@ export default function Home(){
                         ))}
                     </div>
                 </div>
-            </div>
+            </MainLayout>
         )
 }

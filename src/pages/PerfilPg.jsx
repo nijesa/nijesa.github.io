@@ -1,9 +1,10 @@
 import React from 'react'
-import { Link } from 'react-router'
+import { Link } from 'react-router-dom'
+import MainLayout from '../layouts/MainLayout'
 
 export default function PerfilPg(){
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#AED581] p-4">
+    <MainLayout>
       <div className="w-[375px] max-w-full h-[812px] bg-[#FFF8E1] rounded-3xl shadow-lg overflow-hidden flex flex-col">
         {/* Header */}
         <header className="flex items-center justify-between px-4 py-3 border-b border-[#AED581]">
@@ -92,6 +93,6 @@ export default function PerfilPg(){
           </div>
         </main>
       </div>
-    </div>
+    </MainLayout>
   )
 }

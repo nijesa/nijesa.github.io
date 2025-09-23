@@ -2,10 +2,11 @@
 import React from 'react'
 import GoogleLogo from '../imgs/google.svg'
 import { Link } from "react-router";
+import MainLayout from '../layouts/MainLayout'
 
 export default function Ejemplo() {
 	return (
-		<div className="min-h-screen flex items-center justify-center bg-[#AED581] p-4">
+		<MainLayout>
 			{/* Phone-sized card */}
 			<div className="w-[360px] max-w-full h-[780px] sm:h-auto bg-[#FFF8E1] rounded-3xl shadow-lg p-6 flex flex-col items-center">
 				<div className="w-full flex-1 flex flex-col items-center justify-start pt-6">
@@ -63,6 +64,6 @@ export default function Ejemplo() {
 				</div>
 
 			</div>
-		</div>
+		</MainLayout>
 	)
 }
