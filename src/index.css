@@ -1,7 +1,21 @@
 @import "Tailwindcss";
+/* Theme variables */
+:root{
+  --bg: #AED581;
+  --card: #FFF8E1;
+  --text: #000000;
+}
+
+[data-theme='dark']{
+  --bg: #0f172a; /* slate-900 */
+  --card: #111827; /* gray-900 */
+  --text: #F3F4F6; /* gray-100 */
+}
+
 /* Add a serif font fallback similar to the mock */
 body {
-  background-color: #AED581;
+  background-color: var(--bg);
+  color: var(--text);
   font-family: Georgia, 'Times New Roman', serif;
 }
 
@@ -9,9 +23,16 @@ body {
 #root, html, body {
   height: 100%;
 }
+
 .active{
   color: red;
-  background-color: #AED581;
+  background-color: var(--bg);
   padding: auto;
   border-radius: 10px;
+}
+
+/* Utility to style cards/containers using variables */
+.theme-card{
+  background-color: var(--card);
+  color: var(--text);
 }
