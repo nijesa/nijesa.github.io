@@ -4,12 +4,16 @@
   --bg: #AED581;
   --card: #FFF8E1;
   --text: #000000;
+  --accent: #AED581;
+  --highlight: #FFF176;
 }
 
 [data-theme='dark']{
   --bg: #0f172a; /* slate-900 */
-  --card: #111827; /* gray-900 */
-  --text: #F3F4F6; /* gray-100 */
+  --card: #0b1220; /* darker card */
+  --text: #FFF8E1; /* cream text in dark mode per request */
+  --accent: #172029;
+  --highlight: #6b5e3e;
 }
 
 /* Add a serif font fallback similar to the mock */
@@ -35,4 +39,89 @@ body {
 .theme-card{
   background-color: var(--card);
   color: var(--text);
+}
+
+/* Utility classes to replace hard-coded Tailwind hex utilities */
+.bg-card{ background-color: var(--card) !important; }
+.bg-accent{ background-color: var(--accent) !important; }
+.bg-highlight{ background-color: var(--highlight) !important; }
+.border-accent{ border-color: var(--accent) !important; }
+.text-cream{ color: var(--text) !important; }
+
+/* make inputs / placeholders adapt in dark mode */
+.input-accent{ background-color: var(--accent) !important; }
+.placeholder-accent::placeholder{ color: rgba(0,0,0,0.55); }
+
+/* Force text and icons to use cream color in dark mode so TopBar style applies globally */
+[data-theme='dark']{
+  color: var(--text) !important;
+}
+
+[data-theme='dark'] svg {
+  color: var(--text) !important;
+}
+
+/* Ensure SVG strokes/fills inherit the text color (currentColor) in dark mode */
+[data-theme='dark'] svg,
+[data-theme='dark'] svg * {
+  /* always inherit stroke color from currentColor */
+  stroke: currentColor !important;
+  color: var(--text) !important;
+}
+
+/* Broader selectors to force cream color across most UI text and icon elements in dark mode */
+[data-theme='dark'] h1,
+[data-theme='dark'] h2,
+[data-theme='dark'] h3,
+[data-theme='dark'] h4,
+[data-theme='dark'] h5,
+[data-theme='dark'] h6,
+[data-theme='dark'] p,
+[data-theme='dark'] span,
+[data-theme='dark'] a,
+[data-theme='dark'] label,
+[data-theme='dark'] button,
+[data-theme='dark'] li,
+[data-theme='dark'] input,
+[data-theme='dark'] textarea,
+[data-theme='dark'] select,
+[data-theme='dark'] small,
+[data-theme='dark'] strong,
+[data-theme='dark'] em {
+  color: var(--text) !important;
+}
+
+/* Form placeholders and value text */
+[data-theme='dark'] ::placeholder {
+  color: var(--text) !important;
+  opacity: 0.85;
+}
+
+/* SVG elements and common shape tags to catch hard-coded fills */
+[data-theme='dark'] svg *:not([fill="none"]):not([fill="transparent"]):not([style*="fill:none"]) {
+  /* Fill SVG shapes with the cream color unless they explicitly request no fill. This
+     prevents outline icons (fill:none) from becoming filled in dark mode. */
+  fill: currentColor !important;
+}
+
+/* Cover common shape tags while respecting explicit 'fill="none"' or inline styles */
+[data-theme='dark'] path:not([fill="none"]):not([fill="transparent"]):not([style*="fill:none"]),
+[data-theme='dark'] circle:not([fill="none"]):not([fill="transparent"]):not([style*="fill:none"]),
+[data-theme='dark'] rect:not([fill="none"]):not([fill="transparent"]):not([style*="fill:none"]),
+[data-theme='dark'] polygon:not([fill="none"]):not([fill="transparent"]):not([style*="fill:none"]) {
+  fill: currentColor !important;
+}
+
+/* Ensure buttons and interactive elements use cream text on dark background */
+[data-theme='dark'] button,
+[data-theme='dark'] .btn,
+[data-theme='dark'] .button {
+  color: var(--text) !important;
+}
+
+/* Ensure text inside components (like recipe cards, profile info) is cream */
+[data-theme='dark'] .theme-card,
+[data-theme='dark'] .bg-card,
+[data-theme='dark'] .text-cream {
+  color: var(--text) !important;
 }

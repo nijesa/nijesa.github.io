@@ -12,7 +12,9 @@ import RecuperarCuenta from './pages/recuperarCuenta'
 import RecetaComp from './component/Receta/RecetaComp'
 import RecetaPg from './pages/RecetasPg'
 import PerfilPg from './pages/PerfilPg'
+import SharedLayout from './layouts/SharedLayout'
 import { Toaster } from 'react-hot-toast'
+import RecetasGuardadas from './pages/RecetasGuardadas'
 
 
 
@@ -21,14 +23,18 @@ createRoot(document.getElementById('root')).render(
     <Toaster/>
      <HashRouter>
         <Routes>
-          <Route path="/" element ={<Home/>}/>
-          <Route path="/inicioSesion" element ={<Ejemplo/>}/>
+          <Route path="/home" element={<SharedLayout />}>
+            <Route index element={<Home />} />
+            <Route path="RecetaPg" element={<RecetaPg />} />
+            <Route path="PerfilPg" element={<PerfilPg />} />
+            <Route path="RecetasGuardadas" element={<RecetasGuardadas/>} />
+          </Route>
+
+          <Route path="/" element ={<Ejemplo/>}/>
           <Route path="/boton" element ={<Botonin/>}/>
-          <Route path='*' element={<NotFound/>}/>
           <Route path='/Recuperar_Contrasena' element={<RecuperarCuenta/>}/>
           <Route path='/RecetaComp' element={<RecetaComp/>}/>
-          <Route path='/RecetaPg' element={<RecetaPg/>}/>
-          <Route path='/PerfilPg' element={<PerfilPg/>}/>
+          <Route path='*' element={<NotFound/>}/>
         </Routes>
       </HashRouter>
   </StrictMode>,

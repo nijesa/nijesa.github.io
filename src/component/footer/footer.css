@@ -1,6 +1,6 @@
 h1{
   height:40px;
-  background-color:#fff8e1;
+  background-color: var(--card);
   text-align:center;
 }
 h2{
@@ -15,5 +15,5 @@ h2{
   
 }
 body{
-  background-color:	#aed581;
+  background-color: var(--accent);
 }

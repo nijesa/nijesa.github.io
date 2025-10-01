@@ -48,15 +48,19 @@ export default function RecetaComp({
 			}
 
 			return (
-				<article onClick={onOpen} className={`bg-[#FFF8E1] border-2 border-gray-900 rounded-lg overflow-hidden flex flex-col sm:flex-row items-stretch gap-4 p-4 ${className}`}>
+				<article onClick={onOpen} className={`theme-card border-2 border-gray-900 rounded-lg overflow-hidden flex flex-col sm:flex-row items-stretch gap-4 p-4 ${className}`}>
 					<div className="flex-1 pr-2">
 						<div className="flex justify-between items-start">
 							<h3 className="text-2xl font-serif text-gray-900 mb-2">{title}</h3>
 							<button onClick={toggleSave} aria-label="guardar" className="p-2">
 								{saved ? (
+									// saved: filled icon
 									<svg className="w-6 h-6 text-yellow-600" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M5 3h14v18l-7-3-7 3V3z"/></svg>
 								) : (
-									<svg className="w-6 h-6 text-gray-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M5 3h14v18l-7-3-7 3V3z" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+									// not saved: outline icon - ensure path is explicitly unfilled so dark-mode CSS can't fill it
+									<svg className="w-6 h-6 text-gray-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg">
+										<path d="M5 3h14v18l-7-3-7 3V3z" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ fill: 'none' }} />
+									</svg>
 								)}
 							</button>
 						</div>
