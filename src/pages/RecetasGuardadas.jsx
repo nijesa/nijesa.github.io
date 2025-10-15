@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router'
 import RecetaComp from '../component/Receta/RecetaComp'
-import MainLayout from '../layouts/MainLayout'
+import ResponsiveLayout from '../layouts/ResponsiveLayout'
 
 export default function RecetasGuardadas(){
   const navigate = useNavigate()
@@ -13,9 +13,8 @@ export default function RecetasGuardadas(){
   }, [])
 
   return (
-    <MainLayout>
-      <div className="w-[375px] max-w-full h-[812px] rounded-3xl shadow-lg overflow-hidden flex flex-col theme-card">
-        <main className="p-4 overflow-auto flex-1" style={{ backgroundColor: 'var(--bg)' }}>
+    <div className="w-full max-w-full md:max-w-none md:w-auto h-auto md:h-[680px] rounded-lg overflow-hidden flex flex-col">
+      <main className="p-0 md:p-4 overflow-auto flex-1">
           <div className="space-y-4">
             {recetas.length === 0 ? (
               <div className="text-center py-12">
@@ -30,10 +29,9 @@ export default function RecetasGuardadas(){
           </div>
 
           <div className="mt-6 px-2">
-            <button onClick={() => navigate('/')} className="w-full bg-highlight text-center rounded-xl py-4 text-lg font-serif text-cream shadow">Añadir más recetas</button>
+            <button onClick={() => navigate('/home')} className="w-full bg-highlight text-center rounded-xl py-4 text-lg font-serif text-cream shadow">Añadir más recetas</button>
           </div>
         </main>
       </div>
-    </MainLayout>
   )
 }

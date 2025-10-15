@@ -15,7 +15,7 @@ export default function TopBar(){
           </svg>
         </button>
 
-        <Link to="/" aria-label="home" className="p-1">
+  <Link to="/home" aria-label="home" className="p-1">
           <svg className="w-6 h-6 text-cream" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M3 9.5L12 3l9 6.5V21a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1V9.5z" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
@@ -27,7 +27,7 @@ export default function TopBar(){
       </div>
 
       <div className="flex items-center gap-2">
-        <Link to="/PerfilPg" aria-label="profile" className="p-1">
+  <Link to="/home/PerfilPg" aria-label="profile" className="p-1">
           <svg className="w-6 h-6 text-cream" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M12 12c2.761 0 5-2.239 5-5s-2.239-5-5-5-5 2.239-5 5 2.239 5 5 5zM4 20c0-4 4-7 8-7s8 3 8 7" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
