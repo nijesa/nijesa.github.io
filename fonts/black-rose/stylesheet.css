@@ -1,0 +1,13 @@
+@font-face {
+    font-family: 'Black Rose';
+    src: url('BlackRose.eot');
+    src: url('BlackRose.eot?#iefix') format('embedded-opentype'),
+        url('BlackRose.woff2') format('woff2'),
+        url('BlackRose.woff') format('woff'),
+        url('BlackRose.ttf') format('truetype'),
+        url('BlackRose.svg#BlackRose') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
