@@ -1,14 +1,10 @@
 import React from 'react'
-import { Link, useNavigate } from 'react-router'
-
+import { Link } from 'react-router'
+import { useNavigate } from 'react-router'
 
 export default function PerfilPg(){
-  const navigate = useNavigate()
-  const onOpenR = () =>{
-    navigate('/home/RecetasGuardadas')
-  }
   return (
-    <div className="w-full max-w-full md:max-w-none md:w-auto h-auto md:h-[680px] rounded-lg overflow-hidden flex flex-col">
+    <div className="perfil-page w-full max-w-full md:max-w-none md:w-auto h-auto md:h-[680px] rounded-lg overflow-hidden flex flex-col">
       <main className="p-0 md:p-6 overflow-auto flex-1">
           <h2 className="text-2xl font-serif text-center text-gray-900 mb-6">Perfil</h2>
 
@@ -65,19 +61,15 @@ export default function PerfilPg(){
           </div>
 
           <div className="mt-6 space-y-4">
-            <button onClick={onOpenR} className="block bg-highlight text-center rounded-xl py-4 text-lg font-serif text-cream shadow">Recetas Guardadas</button>
+            <Link to="/home/RecetasGuardadas" className="block bg-highlight text-center rounded-xl py-4 text-lg font-serif text-cream shadow">Recetas Guardadas</Link>
 
-            <button
-  to="MisIngredientes"
-  className="block bg-highlight text-center rounded-xl py-4 text-lg font-serif text-cream shadow flex items-center justify-center gap-3"
->
-  <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <circle cx="12" cy="12" r="10" stroke="#0f172a" strokeWidth="1.2" />
-    <path d="M8 13c1.333-2 6-2 7 0" stroke="#0f172a" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>
-  Mis ingredientes
-</button>
-
+            <Link to="/home/MisIngredientes" className="block bg-highlight text-center rounded-xl py-4 text-lg font-serif text-cream shadow flex items-center justify-center gap-3">
+              <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="10" stroke="#0f172a" strokeWidth="1.2" />
+                <path d="M8 13c1.333-2 6-2 7 0" stroke="#0f172a" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+              Mis ingredientes
+            </Link>
           </div>
         </main>
       </div>

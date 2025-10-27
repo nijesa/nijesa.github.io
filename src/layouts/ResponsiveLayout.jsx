@@ -1,8 +1,21 @@
 import React, { useEffect, useState } from 'react'
 import TopBar from '../component/TopBar'
+import useStore from '../store'
 
 export default function ResponsiveLayout({ children, showHeroDesktop = false, showTopBar = true }){
   const [isDesktop, setIsDesktop] = useState(typeof window !== 'undefined' ? window.innerWidth >= 768 : false)
+  const isDark = useStore((s) => s.isDark)
+
+  // Ensure the data-theme is set on the <html> root so CSS custom properties
+  // used by body (like background-color: var(--bg)) get the correct values.
+  useEffect(() => {
+    if (typeof document === 'undefined') return
+    try {
+      document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light')
+    } catch (e) {
+      // ignore in non-browser environments
+    }
+  }, [isDark])
 
   useEffect(() => {
     if (typeof window === 'undefined') return
@@ -21,7 +34,7 @@ export default function ResponsiveLayout({ children, showHeroDesktop = false, sh
   // Render only the matching branch so TopBar mounts once
   if (!isDesktop) {
     return (
-      <div className="min-h-screen flex items-center justify-center p-4">
+      <div className="min-h-screen flex items-center justify-center p-4" data-theme={isDark ? 'dark' : 'light'}>
         <div className="w-[375px] max-w-full rounded-3xl shadow-lg overflow-hidden theme-card flex flex-col">
           {showTopBar ? <TopBar /> : null}
           <div className="p-4 overflow-auto">
@@ -34,7 +47,7 @@ export default function ResponsiveLayout({ children, showHeroDesktop = false, sh
 
   // Desktop
   return (
-    <div className="w-full min-h-screen flex">
+    <div className="w-full min-h-screen flex" data-theme={isDark ? 'dark' : 'light'}>
       {showHeroDesktop ? (
         <div className="w-1/4 bg-accent p-8 flex flex-col">
           <div className="text-4xl font-serif text-cream">RecetasPaHoy</div>

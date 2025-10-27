@@ -8,7 +8,7 @@ export default function Ejemplo() {
 	return (
 			<ResponsiveLayout showHeroDesktop={false} showTopBar={false}>
 				{/* Desktop: two-column layout (left big title, right cream panel). Mobile: keep the phone card */}
-				<div className="min-h-screen">
+				<div className="min-h-screen no-fluid-scale">
 					<div className="md:flex md:items-stretch">
 									{/* Left large title area */}
 									<div className="hidden md:flex md:w-1/2 bg-accent items-center justify-center md:h-screen">
@@ -104,20 +104,20 @@ export default function Ejemplo() {
 
 													<button
 														type="submit"
-														className="mt-2 w-full bg-[#F57C00] hover:opacity-95 text-white font-semibold rounded-xl py-3 shadow-md"
+														className="mt-2 w-full bg-accent hover:opacity-95 text-white font-semibold rounded-xl py-3 shadow-md"
 													>
 														<Link to={"/home"}>Iniciar Sesion</Link>
 													</button>
 												</form>
 
 												<div className="mt-6 flex items-center justify-center gap-6">
-													<button aria-label="Iniciar con Google" className="w-16 h-16 rounded-xl bg-[#F57C00] flex items-center justify-center shadow">
+													<button aria-label="Iniciar con Google" className="w-16 h-16 rounded-xl bg-accent flex items-center justify-center shadow">
 														<Link to={"/home"}>
 															<img src={GoogleLogo} alt="Google" className="w-8 h-8" />
 														</Link>
 													</button>
 
-													<button aria-label="Iniciar con Outlook" className="w-16 h-16 rounded-xl bg-[#F57C00] flex items-center justify-center shadow">
+													<button aria-label="Iniciar con Outlook" className="w-16 h-16 rounded-xl bg-accent flex items-center justify-center shadow">
 														<Link to={"/home"}><svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
 															<rect x="2" y="4" width="20" height="16" rx="3" fill="white" />
 															<path d="M3 6.5L12 13L21 6.5" stroke="#F97316" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />

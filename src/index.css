@@ -8,6 +8,17 @@
   --highlight: #FFF176;
 }
 
+/* Fluid inverse scaling: smaller viewport width => larger text.
+   - --base-text is the desktop/base font size.
+   - --fluid-text grows as viewport width decreases (clamped to a max).
+   This keeps desktop sizes >= base but increases text on narrow screens.
+*/
+:root {
+  --base-text: 16px;
+  /* Very conservative: max 20px, low multiplier 0.004 */
+  --fluid-text: clamp(var(--base-text), calc(var(--base-text) + (900px - 100vw) * 0.004), 20px);
+}
+
 [data-theme='dark']{
   --bg: #0f172a; /* slate-900 */
   --card: #0b1220; /* darker card */
@@ -21,7 +32,41 @@ body {
   background-color: var(--bg);
   color: var(--text);
   font-family: Georgia, 'Times New Roman', serif;
+  font-size: var(--fluid-text);
 }
+
+/* Scale headings and common UI text proportionally from the fluid base */
+h1 { font-size: calc(var(--fluid-text) * 1.6); }
+h2 { font-size: calc(var(--fluid-text) * 1.35); }
+h3 { font-size: calc(var(--fluid-text) * 1.15); }
+p, label, button, input, textarea, a, span { font-size: var(--fluid-text); }
+
+/* Opt-out: elements inside .no-fluid-scale should keep the base sizes */
+.no-fluid-scale, .no-fluid-scale * {
+  font-size: var(--base-text) !important;
+}
+.no-fluid-scale h1 { font-size: calc(var(--base-text) * 1.6) !important; }
+.no-fluid-scale h2 { font-size: calc(var(--base-text) * 1.35) !important; }
+.no-fluid-scale h3 { font-size: calc(var(--base-text) * 1.15) !important; }
+.no-fluid-scale p, .no-fluid-scale label, .no-fluid-scale button, .no-fluid-scale input, .no-fluid-scale textarea, .no-fluid-scale a, .no-fluid-scale span {
+  font-size: var(--base-text) !important;
+}
+
+/* Perfil page: inverse proportional scaling of text to viewport width.
+   As viewport width decreases the text increases (clamped to 24px max on mobile).
+   This applies only to .perfil-page so other pages remain unaffected. */
+.perfil-page {
+  --perfil-base: 16px;
+  /* Very conservative: max 24px, low multiplier 0.025 */
+  --perfil-fluid: clamp(var(--perfil-base), calc(var(--perfil-base) + (900px - 100vw) * 0.025), 24px);
+}
+.perfil-page, .perfil-page p, .perfil-page label, .perfil-page button, .perfil-page input, .perfil-page textarea, .perfil-page a, .perfil-page span {
+  font-size: var(--perfil-fluid) !important;
+}
+.perfil-page h1 { font-size: calc(var(--perfil-fluid) * 2.6) !important; }
+.perfil-page h2 { font-size: calc(var(--perfil-fluid) * 2.35) !important; }
+.perfil-page h3 { font-size: calc(var(--perfil-fluid) * 2.15) !important; }
+
 
 /* Ensure the root uses full height for centering */
 #root, html, body {
@@ -125,3 +170,92 @@ body {
 [data-theme='dark'] .text-cream {
   color: var(--text) !important;
 }
+
+/* Mobile TopBar: adjust title vertical alignment */
+@media (max-width: 768px) {
+  header.bg-card .flex-1 h1 {
+    transform: translateY(-0.6rem);
+  }
+
+  /* Ejemplo page: fix Google icon aspect ratio */
+  .no-fluid-scale img[alt="Google"] {
+    width: 2rem !important;
+    height: 2rem !important;
+    object-fit: contain !important;
+  }
+}
+
+/* Mobile-specific styling: increase heights and padding for small screens (max-width 768px) */
+@media (max-width: 768px) {
+  /* TopBar: increase header height */
+  header.bg-card {
+    padding-top: 1.25rem !important;
+    padding-bottom: 1.25rem !important;
+  }
+
+  /* Primary buttons: increase height and padding */
+  .block.bg-highlight,
+  .block.bg-accent,
+  button.w-full.bg-highlight,
+  button.w-full.bg-accent {
+    padding-top: 1.25rem !important;
+    padding-bottom: 1.25rem !important;
+    min-height: 3.5rem !important;
+  }
+
+  /* Recipe cards: reduce size for mobile */
+  .theme-card {
+    padding: 0.75rem !important;
+    min-height: auto !important;
+  }
+
+  article.theme-card {
+    padding: 0.75rem !important;
+  }
+
+  /* Make recipe component images smaller on mobile */
+  .theme-card img {
+    min-height: 5rem !important;
+    height: 5rem !important;
+  }
+
+  /* Icon buttons in TopBar: slightly larger tappable area */
+  header.bg-card .p-1 {
+    padding: 0.75rem !important;
+  }
+
+  /* Inputs: larger touch targets */
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  textarea {
+    padding-top: 0.875rem !important;
+    padding-bottom: 0.875rem !important;
+    min-height: 2.75rem !important;
+  }
+}
+
+/* Hide scrollbar track and thumb for MisIngredientes overflow (keep only outer slider) */
+.perfil-page {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.perfil-page::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide inner scrollbar but keep outer track visible in MisIngredientes */
+main::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
+
+main::-webkit-scrollbar {
+  width: 8px;
+}
+
+main::-webkit-scrollbar-track {
+  background-color: var(--accent);
+  border-radius: 4px;
+}
+

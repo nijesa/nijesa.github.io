@@ -15,6 +15,7 @@ import PerfilPg from './pages/PerfilPg'
 import SharedLayout from './layouts/SharedLayout'
 import { Toaster } from 'react-hot-toast'
 import RecetasGuardadas from './pages/RecetasGuardadas'
+import MisIngredientes from './pages/MisIngredientes'
 
 
 
@@ -28,6 +29,7 @@ createRoot(document.getElementById('root')).render(
             <Route path="RecetaPg" element={<RecetaPg />} />
             <Route path="PerfilPg" element={<PerfilPg />} />
             <Route path="RecetasGuardadas" element={<RecetasGuardadas/>} />
+            <Route path="MisIngredientes" element={<MisIngredientes/>} />
           </Route>
 
           <Route path="/" element ={<Ejemplo/>}/>
